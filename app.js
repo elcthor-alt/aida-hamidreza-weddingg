@@ -8,7 +8,9 @@ const colors = [
     "#8338ec",
     "#ff9f1c",
     "#f72585",
-    "#4cc9f0"
+    "#4cc9f0",
+    #4d8eff,
+    #ff4df3
 ];
 
 function createPaper() {
