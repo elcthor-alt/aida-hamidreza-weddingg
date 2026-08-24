@@ -82,16 +82,6 @@ setTimeout(() => {
 
 
 
-const music = document.getElementById("weddingMusic");
-
-function startMusic() {
-    music.play().catch(() => {
-        console.log("Waiting for user interaction...");
-    });
-
-    document.removeEventListener("click", startMusic);
-    document.removeEventListener("touchstart", startMusic);
-}
 
 document.addEventListener("click", startMusic);
 document.addEventListener("touchstart", startMusic);
