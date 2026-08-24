@@ -1,122 +1,98 @@
 const container = document.querySelector(".paper-container");
-const bgMusic = document.getElementById("bgMusic");
 
 const colors = [
-  "#ff4d6d",
-  "#ffd166",
-  "#06d6a0",
-  "#118ab2",
-  "#8338ec",
-  "#ff9f1c",
-  "#f72585",
-  "#4cc9f0",
-  "#4d8eff",
-  "#ff4df3"
+    "#ff4d6d",
+    "#ffd166",
+    "#06d6a0",
+    "#118ab2",
+    "#8338ec",
+    "#ff9f1c",
+    "#f72585",
+    "#4cc9f0",
+    "#4d8eff",
+    "#ff4df3"
 ];
 
 function createPaper() {
-  const paper = document.createElement("div");
-  paper.classList.add("paper");
+    const paper = document.createElement("div");
 
-  // Random horizontal starting position
-  const startX = Math.random() * 100;
+    paper.classList.add("paper");
 
-  // Random horizontal movement
-  const wind = 50 + Math.random() * 180;
+    const startX = Math.random() * 100;
+    const wind = 40 + Math.random() * 180;
 
-  // Random size
-  const width = 7 + Math.random() * 9;
-  const height = 10 + Math.random() * 15;
+    paper.style.left = `${startX}%`;
 
-  // Random rotation
-  const rotation = Math.random() * 360;
+    paper.style.background =
+        colors[Math.floor(Math.random() * colors.length)];
 
-  paper.style.left = `${startX}%`;
-  paper.style.width = `${width}px`;
-  paper.style.height = `${height}px`;
+    paper.style.width =
+        `${6 + Math.random() * 10}px`;
 
-  paper.style.background =
-    colors[Math.floor(Math.random() * colors.length)];
+    paper.style.height =
+        `${10 + Math.random() * 16}px`;
 
-  paper.style.setProperty(
-    "--wind",
-    `${Math.random() > 0.5 ? wind : -wind}px`
-  );
+    paper.style.setProperty(
+        "--start-x",
+        `${(Math.random() - 0.5) * 40}px`
+    );
 
-  paper.style.setProperty(
-    "--rotation",
-    `${rotation}deg`
-  );
+    paper.style.setProperty(
+        "--wind",
+        `${Math.random() > 0.5 ? wind : -wind}px`
+    );
 
-  paper.style.setProperty(
-    "--duration",
-    `${4 + Math.random() * 4}s`
-  );
+    paper.style.setProperty(
+        "--duration",
+        `${3 + Math.random() * 4}s`
+    );
 
-  paper.style.setProperty(
-    "--delay",
-    `${Math.random() * 0.2}s`
-  );
+    paper.style.setProperty(
+        "--spin",
+        `${1 + Math.random() * 2}s`
+    );
 
-  // Random shape
-  paper.style.borderRadius =
-    Math.random() > 0.5 ? "2px" : "50% 10% 50% 10%";
+    paper.style.animationDelay =
+        `${Math.random() * 0.5}s`;
 
-  container.appendChild(paper);
+    container.appendChild(paper);
 
-  // Remove after animation
-  setTimeout(() => {
-    paper.remove();
-  }, 8500);
+    setTimeout(() => {
+        paper.remove();
+    }, 8000);
 }
 
 
-// First beautiful wave
+// First BIG wave
 for (let i = 0; i < 100; i++) {
-  setTimeout(() => {
-    createPaper();
-  }, Math.random() * 1200);
+    setTimeout(() => {
+        createPaper();
+    }, Math.random() * 1200);
 }
 
 
 // Second wave
 setTimeout(() => {
-  for (let i = 0; i < 80; i++) {
-    setTimeout(() => {
-      createPaper();
-    }, Math.random() * 1200);
-  }
+    for (let i = 0; i < 70; i++) {
+        setTimeout(() => {
+            createPaper();
+        }, Math.random() * 1000);
+    }
 }, 1500);
 
 
-// Keep making small amounts of confetti
-setInterval(() => {
-  for (let i = 0; i < 4; i++) {
-    createPaper();
-  }
-}, 900);
-
-
-// ===============================
-// MUSIC
-// ===============================
-
+// Music
 function startMusic() {
-  if (!bgMusic) return;
+    const music = document.getElementById("bgMusic");
 
-  bgMusic.volume = 0.45;
+    if (music) {
+        music.volume = 0.5;
 
-  bgMusic.play()
-    .then(() => {
-      console.log("Music started");
-    })
-    .catch((error) => {
-      console.log("Music waiting for interaction:", error);
-    });
-
-  document.removeEventListener("click", startMusic);
-  document.removeEventListener("touchstart", startMusic);
+        music.play().catch(() => {
+            console.log("Music waiting for user interaction");
+        });
+    }
 }
 
-document.addEventListener("click", startMusic, { once: true });
-document.addEventListener("touchstart", startMusic, { once: true });
+document.addEventListener("click", startMusic);
+document.addEventListener("touchstart", startMusic);
