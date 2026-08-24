@@ -1,3 +1,67 @@
+body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 30px 20px;
+
+  font-family: "Amsterdam", cursive;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 255, 255, 1),
+      rgba(250, 244, 238, 1)
+    );
+
+  overflow-x: hidden;
+}
+
+.wedding {
+  width: 100%;
+  max-width: 700px;
+
+  position: relative;
+  z-index: 2;
+}
+
+.wedding-card {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  background: white;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.15),
+    0 5px 15px rgba(0, 0, 0, 0.08);
+
+  animation:
+    cardAppear
+    1.5s cubic-bezier(0.16, 1, 0.3, 1)
+    forwards;
+}
+
+.wedding-card img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+
+
 .paper-container {
   position: fixed;
   inset: 0;
