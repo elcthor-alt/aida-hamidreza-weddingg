@@ -59,7 +59,7 @@ function createPaper() {
 
     setTimeout(() => {
         paper.remove();
-    }, 8000);
+    }, 80000);
 }
 
 
