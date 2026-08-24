@@ -1,16 +1,14 @@
-const container = document.querySelector(".paper-container");
-
 const colors = [
+(let i = 0; i < 100; i++) { setTimeout(() => { createPaper(); }, Math.random() * 1200); } // Second wav
     "#ff4d6d",
+e setTimeout(() => { for (let i = 0; i < 70; i++) { setTimeout(() => { createPaper(); }, Math.random() * 1000); } }, 1500);
     "#ffd166",
     "#06d6a0",
     "#118ab2",
     "#8338ec",
     "#ff9f1c",
     "#f72585",
-    "#4cc9f0",
-    "#4d8eff",
-    "#ff4df3"
+    "#4cc9f0"
 ];
 
 function createPaper() {
