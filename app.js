@@ -1,7 +1,7 @@
+const container = document.querySelector(".paper-container");
+
 const colors = [
-(let i = 0; i < 100; i++) { setTimeout(() => { createPaper(); }, Math.random() * 1200); } // Second wav
     "#ff4d6d",
-e setTimeout(() => { for (let i = 0; i < 70; i++) { setTimeout(() => { createPaper(); }, Math.random() * 1000); } }, 1500);
     "#ffd166",
     "#06d6a0",
     "#118ab2",
@@ -79,17 +79,16 @@ setTimeout(() => {
 }, 1500);
 
 
-// Music
+
+const music = document.getElementById("weddingMusic");
+
 function startMusic() {
-    const music = document.getElementById("bgMusic");
+    music.play().catch(() => {
+        console.log("Waiting for user interaction...");
+    });
 
-    if (music) {
-        music.volume = 0.5;
-
-        music.play().catch(() => {
-            console.log("Music waiting for user interaction");
-        });
-    }
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("touchstart", startMusic);
 }
 
 document.addEventListener("click", startMusic);
